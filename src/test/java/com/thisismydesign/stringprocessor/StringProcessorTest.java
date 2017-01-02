@@ -82,4 +82,11 @@ public class StringProcessorTest {
         assertEquals("AAAb", StringProcessor.replace("aaab", Pattern.compile("a"), new TestReplacer()));
     }
 
+    @Test
+    public void replace_OriginalObject_ShouldNotBeModified() throws Exception {
+        String str = "aaa";
+        StringProcessor.replace(str, Pattern.compile("a"), new TestReplacer());
+        assertEquals("aaa", str);
+    }
+
 }
