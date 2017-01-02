@@ -5,10 +5,12 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static org.junit.Assert.*;
 
 public class StringProcessorTest {
+
     private static final String str = "Contains some keyword";
     private static final String keyword = "keyword";
     private static String[] keyWords;
@@ -57,6 +59,22 @@ public class StringProcessorTest {
         String[] keyWords = new String[] {keyword};
         lines.add("some other line");
         assertNull(StringProcessor.findAny(keyWords, lines));
+    }
+
+    @Test
+    public void replace_ShouldReplaceMatchingPattern() throws Exception {
+        assertEquals("!!!", StringProcessor.replace("aaa", Pattern.compile("a"), new Replacer("!")));
+    }
+
+    @Test
+    public void replaceAll_ShouldReplaceAllMatchingPatterns() throws Exception {
+        Pattern[] patterns = new Pattern[] {Pattern.compile("a"), Pattern.compile("b")};
+        assertEquals("!!!!!!", StringProcessor.replaceAll("aaabbb", patterns, new Replacer("!")));
+    }
+
+    @Test
+    public void replace_ShouldNotReplaceNonMatchingPattern() throws Exception {
+        assertEquals("aaa", StringProcessor.replace("aaa", Pattern.compile("b"), new Replacer("!")));
     }
 
 }
