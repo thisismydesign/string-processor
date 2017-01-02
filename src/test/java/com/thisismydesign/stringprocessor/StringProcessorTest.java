@@ -77,4 +77,9 @@ public class StringProcessorTest {
         assertEquals("aaa", StringProcessor.replace("aaa", Pattern.compile("b"), new Replacer("!")));
     }
 
+    @Test
+    public void replace_WithCustomReplacer() throws Exception {
+        assertEquals("AAAb", StringProcessor.replace("aaab", Pattern.compile("a"), new TestReplacer()));
+    }
+
 }
