@@ -62,30 +62,25 @@ public class StringProcessorTest {
     }
 
     @Test
-    public void replace_ShouldReplaceMatchingPattern() throws Exception {
-        assertEquals("!!!", StringProcessor.replace("aaa", Pattern.compile("a"), new Replacer("!")));
+    public void replace_WithCustomReplacer_ShouldReplaceMatchingPattern() throws Exception {
+        assertEquals("!!!", StringProcessor.replace("aaa", Pattern.compile("a"), new TestReplacer("!")));
     }
 
     @Test
-    public void replaceAll_ShouldReplaceAllMatchingPatterns() throws Exception {
+    public void replaceAll_WithCustomReplacer_ShouldReplaceAllMatchingPatterns() throws Exception {
         Pattern[] patterns = new Pattern[] {Pattern.compile("a"), Pattern.compile("b")};
-        assertEquals("!!!!!!", StringProcessor.replaceAll("aaabbb", patterns, new Replacer("!")));
+        assertEquals("!!!!!!", StringProcessor.replaceAll("aaabbb", patterns, new TestReplacer("!")));
     }
 
     @Test
-    public void replace_ShouldNotReplaceNonMatchingPattern() throws Exception {
-        assertEquals("aaa", StringProcessor.replace("aaa", Pattern.compile("b"), new Replacer("!")));
-    }
-
-    @Test
-    public void replace_WithCustomReplacer() throws Exception {
-        assertEquals("AAAb", StringProcessor.replace("aaab", Pattern.compile("a"), new TestReplacer()));
+    public void replace_WithCustomReplacer_ShouldNotReplaceNonMatchingPattern() throws Exception {
+        assertEquals("aaa", StringProcessor.replace("aaa", Pattern.compile("b"), new TestReplacer("!")));
     }
 
     @Test
     public void replace_OriginalObject_ShouldNotBeModified() throws Exception {
         String str = "aaa";
-        StringProcessor.replace(str, Pattern.compile("a"), new TestReplacer());
+        StringProcessor.replace(str, Pattern.compile("a"), new TestReplacer("!"));
         assertEquals("aaa", str);
     }
 
