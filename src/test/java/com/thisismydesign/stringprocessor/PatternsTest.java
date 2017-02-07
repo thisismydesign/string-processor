@@ -23,7 +23,7 @@ public class PatternsTest {
 
     @Test
     public void special() throws Exception {
-        assertEquals("...", StringProcessor.replace(";\"\\", Patterns.special, new TestReplacer(".")));
+        assertEquals("...", StringProcessor.replace(";\"\\", Patterns.snortSpecial, new TestReplacer(".")));
     }
 
     @Test
