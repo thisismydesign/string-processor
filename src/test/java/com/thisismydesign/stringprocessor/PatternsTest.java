@@ -33,11 +33,11 @@ public class PatternsTest {
 
     @Test
     public void specialOrWhiteSpaceExceptSpace() throws Exception {
-        assertEquals(".", StringProcessor.replace(Character.toString((char) 0), Patterns.specialOrWhiteSpaceExceptSpace, new TestReplacer(".")));
+        assertEquals(".", StringProcessor.replace(Character.toString((char) 0), Patterns.controlOrWhiteSpaceExceptSpace, new TestReplacer(".")));
     }
 
     @Test
     public void specialOrWhiteSpaceExceptSpace_ShouldNotReplaceSpace() throws Exception {
-        assertEquals("hi there", StringProcessor.replace("hi there", Patterns.specialOrWhiteSpaceExceptSpace, new TestReplacer(".")));
+        assertEquals("hi there", StringProcessor.replace("hi there", Patterns.controlOrWhiteSpaceExceptSpace, new TestReplacer(".")));
     }
 }

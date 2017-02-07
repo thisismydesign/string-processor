@@ -21,13 +21,13 @@ public class StringProcessor {
     }
 
     public static String replaceAll(String string, Pattern[] patterns, Replacer replacer) {
-        String escaped = string;
+        String replaced = string;
 
         for (Pattern pattern : patterns) {
-            escaped = replace(escaped, pattern, replacer);
+            replaced = replace(replaced, pattern, replacer);
         }
 
-        return escaped;
+        return replaced;
     }
 
     public static String replace(String string, Pattern pattern, Replacer replacer) {
