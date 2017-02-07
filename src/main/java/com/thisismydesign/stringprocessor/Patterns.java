@@ -2,6 +2,9 @@ package com.thisismydesign.stringprocessor;
 
 import java.util.regex.Pattern;
 
+/**
+ * This class contains useful regular expressions.
+ */
 public final class Patterns {
     private Patterns(){}
 
